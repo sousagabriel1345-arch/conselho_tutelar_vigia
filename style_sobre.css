@@ -1,0 +1,374 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+header {  
+  display:flex;
+  justify-content:space-between;
+  background:#ffffff;
+  align-items:center;
+  padding:5px 5px;
+  border-bottom:1px solid #440000;
+}
+.LOGO {
+  display:flex;
+  align-items:center;
+  gap: 10pxpx;
+}
+.LOGO img {
+  width: 50px;
+  height:auto;
+}
+
+.LOGO h6 {
+  font-size:16px;
+  color: #000000;
+  margin:0;
+  line-height:1.2;
+}
+nav ul {
+  display:flex;
+  align-items: center;
+  list-style:none;
+  gap:25px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration:none;
+  color:#07101f;
+  font-weight:bold;
+  font-size:16px;
+}
+
+nav a:hover {
+  color:#440000;
+}
+body {
+    background-color: #f4f7fc; /* Fundo suave levemente azulado */
+    color: #333333;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Títulos das Seções (Nossos Valores, Nossa Equipe) */
+.valores-container h2,
+.equipe-container h2 {
+    text-align: center;
+    color: #0c4391;
+    font-size: 24px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO AZUL (BANNER HERO)
+   ========================================================================== */
+.quem-somos-header {
+      background-color: #007bff;
+  background-image: url('fundo-cabeçalho.png');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  text-align:left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+  padding-left: 5px;
+}
+
+/* Se você usar uma imagem de fundo no cabeçalho */
+.quem-somos-header::after {
+    content: "";
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    width: 150px;
+    height: 150px;
+    background-image: url('imagem-fundo-header.png'); /* Opcional: coração/pessoas */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+}
+
+.quem-somos-header h1 {
+  color:#ffffff;
+    font-size: 32px;
+    margin-bottom:10px;
+    font-weight: 600;
+}
+
+.quem-somos-header p {
+    font-size: 14px;
+    color: #cbdcf7;
+}
+
+/* ==========================================================================
+   3. SEÇÃO MISSÃO E VISÃO (CARDS GRANDES)
+   ========================================================================== */
+.institucional {
+    margin-top: 15px; /* Faz os cards sobreporem levemente o banner se quiser, ou mude para 30px */
+    margin-bottom: 40px;
+}
+
+.card-missao, 
+.card-visao {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Customização dos ícones redondos grandes (Alvo e Olho) */
+.card-missao img, 
+.card-visao img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.institucional .conteudo h2 {
+    color: #0c4391;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.institucional .conteudo p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+/* ==========================================================================
+   4. SEÇÃO NOSSOS VALORES (GRADE HORIZONTAL)
+   ========================================================================== */
+.valores-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+.valores-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.valor-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Ícones dos valores */
+.valor-item img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.valor-item h3 {
+    color: #333333;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.valor-item p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #666666;
+}
+
+/* ==========================================================================
+   5. SEÇÃO NOSSA EQUIPE (CARDS DOS MEMBROS)
+   ========================================================================== */
+.equipe-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap; /* Garante que quebre linha se a tela for pequena */
+}
+
+.card-membro {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px 15px;
+    flex: 1;
+    min-width: 180px; /* Impede que fiquem esmagados */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid #eef2f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Fotos redondas dos conselheiros */
+.card-membro img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    background-color: #e0e0e0;
+}
+
+.card-membro h3 {
+    color: #333333;
+    font-size: 15px;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.card-membro p {
+    color: #777777;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* Botão Saiba Mais */
+.btn-saiba-mais {
+    text-decoration: none;
+    color: #0250c5;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 20px;
+    border: 1px solid #0250c5;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 120px;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Empurra o botão sempre para o fim do card */
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn-saiba-mais:hover {
+    background-color: #0250c5;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDADE (PARA CELULARES E TABLETS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .card-missao, .card-visao {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .valores-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .equipe-grid {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+.btn-denuncia {
+  background-color: #d32f2f;
+  color: #fff !important;
+
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:0.3s;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-denuncia:hover {
+  background-color: #b71c1c;
+  color: #fff !important;
+}
+
+  footer {
+    background:#082b5a;
+    color:#fff;
+    text-align:left;
+    padding:40px 30px;
+    border-top:1px solid #140101;
+  }
+footer h6 {
+  text-align:center;
+  margin-top:10px;
+  margin-bottom:-30px;
+  width:100%;
+  border-top:2px solid rgba(255, 255, 255, 0.849);
+  padding-top:10px;
+  color: #fff;
+}
+.footer-sections {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:40px;
+}
+.footer-column {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+   font-size:16px;
+  color: #fff;
+  margin:0;
+  line-height:1.2;
+  min-width:220px;
+
+}
+.footer-column h4 {
+  margin-bottom: 15px;
+  color: #fff;
+  margin:0 0 10px 0;
+  font-size:16px;
+  font-weight:bold;
+}
+.footer-column ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.footer-column li {
+  margin-bottom:10px;
+}
+.footer-column a {
+  text-decoration:none;
+  color:#fff;
+}
+.footer-column a:hover {
+  text-decoration:underline;
+  opacity:0.8;
+}
+.logo-footer img {
+  align-self:center;
+  width: 70px;
+  margin-bottom: 10px;
+
+}
+.logo-footer h6 {
+  color: #fff;
+  margin: 10px 0 0 0;
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Conselho Tutelar</title>
+    
+    <!-- Importando a fonte Anton do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    
+    <!-- Seu arquivo de estilos (sempre depois das fontes) -->
+    <link rel="stylesheet" href="style_recursos.css">
+  </head>
+
+  <body>
+        <header>
+      <DIV CLASS="LOGO">
+        <IMG SRC="baixados.png" ALT="LOGO"> <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+      </DIV>
+          <NAV>
+            <UL>
+              <LI><A href="inicio_index.html">INÍCIO</A></LI>
+              <LI><A href="sobre_index .html">SOBRE NÓS</A></LI>
+              <LI><A href="recursos_index .html">RECURSOS E DIREITOS</A></LI>
+               <LI><A href="denuncias_index.html"class="btn-denuncia">DENÚNCIAS</A></LI>
+            </UL>
+          </NAV>
+          </HEADER>
+<header class="recursos-header">
+        <div class="header-conteudo">
+            <h1>Direitos e Recursos</h1>
+            <p>Informação é proteção. Conheça seus direitos, recursos e materiais educativos.</p>
+        </div>
+        <div class="header-icone">
+            <img src="icone-livro.png" alt="Ícone de Livro Aberto">
+        </div>
+    </header>
+    <style>
+        /* --- Configurações Gerais e Cores --- */
+        :root {
+            --primary-dark: #1e293b;
+            --primary-blue: #34495e;
+            --accent-blue: #2980b9;
+            --accent-green: #27ae60;
+            --accent-purple: #8e44ad;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Cabeçalho --- */
+        header {
+            background-color: var(--white);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--accent-blue);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* --- Seção de Introdução --- */
+        .intro-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-blue);
+            border-radius: 6px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .intro-box h2 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        /* --- Estrutura das Seções de Direitos --- */
+        .secao-recursos {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .titulo-secao {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            display: block;
+            font-weight: bold;
+        }
+
+        /* Cores temáticas para cada grande bloco */
+        .titulo-secao.fundamentais { color: var(--accent-blue); border-color: var(--accent-blue); }
+        .titulo-secao.protecao { color: var(--accent-green); border-color: var(--accent-green); }
+        .titulo-secao.digital { color: var(--accent-purple); border-color: var(--accent-purple); }
+
+        /* --- Lista de Itens de Direitos Simplificados --- */
+        .item-direito {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .item-direito:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .item-direito h3 {
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .item-direito h3::before {
+            content: "•";
+            font-size: 1.8rem;
+            margin-right: 10px;
+            line-height: 1;
+        }
+
+        /* Cores das bolinhas marcadoras */
+        .fundamentais-lista h3::before { color: var(--accent-blue); }
+        .protecao-lista h3::before { color: var(--accent-green); }
+        .digital-lista h3::before { color: var(--accent-purple); }
+
+        .item-direito p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding-left: 18px;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+
+        <div class="intro-box">
+            <h2>Princípio da Prioridade Absoluta</h2>
+            <p>Todas as crianças e adolescentes possuem direito à proteção integral. É dever da família, da comunidade, da sociedade e do Poder Público assegurar com prioridade máxima a efetivação desses direitos fundamentais.</p>
+        </div>
+
+        <section class="secao-recursos fundamentais-lista">
+            <span class="titulo-secao fundamentais"> Direitos Básicos à Vida e ao Desenvolvimento</span>
+            
+            <div class="item-direito">
+                <h3>Vida e Saúde</h3>
+                <p>Acesso garantido a atendimento médico gratuito pelo SUS (desde a gestação), vacinação obrigatória e proteção integral à vida física e mental.</p>
+            </div>
+
+            <div class="item-direito">
+                <h3>Educação, Cultura, Esporte e Lazer</h3>
+                <p>Direito a vaga em escola pública gratuita próxima de sua residência, igualdade de condições para estudar, acesso a atividades esportivas, culturais e momentos de brincadeira e lazer.</p>
+            </div>
+
+            <div class="item-direito">
+                <h3>Convivência Familiar e Comunitária</h3>
+                <p>Direito de ser criado e educado junto de sua família biológica ou afetiva. O afastamento do lar é uma medida extrema e temporária em casos de risco severo.</p>
+            </div>
+
+            <div class="item-direito">
+                <h3>Liberdade, Respeito e Dignidade</h3>
+                <p>Direito de ir, vir e frequentar espaços públicos; direito de opinar e expressar suas ideias; proteção contra qualquer tratamento desumano, violento ou aterrorizante.</p>
+            </div>
+        </section>
+
+        <section class="secao-recursos protecao-lista">
+            <span class="titulo-secao protecao"> Proteção Contra a Exploração e Violência</span>
+            
+            <div class="item-direito">
+                <h3>Proibição do Trabalho Infantil</h3>
+                <p>É terminantemente proibido qualquer tipo de trabalho para menores de 14 anos. A partir dos 14 anos, é permitido atuar estritamente na condição de Jovem Aprendiz, sem atrapalhar os estudos.</p>
+            </div>
+
+            <div class="item-direito">
+                <h3>Prevenção contra a Negligência e Abuso</h3>
+                <p>Nenhuma criança ou adolescente pode ser objeto de qualquer tipo de negligência, discriminação, exploração, violência, crueldade ou opressão por parte de adultos ou responsáveis.</p>
+            </div>
+        </section>
+
+        <section class="secao-recursos digital-lista">
+            <span class="titulo-secao digital"> O ECA Digital (Proteção e Cidadania na Internet)</span>
+            
+            <div class="item-direito">
+                <h3>Proteção de Dados e Privacidade</h3>
+                <p>Crianças e adolescentes têm direito à proteção de suas informações pessoais na internet. Empresas de aplicativos e jogos não podem coletar ou compartilhar dados de menores sem o consentimento claro dos pais.</p>
+            </div>
+
+            <div class="item-direito">
+                <h3>Segurança contra a Exploração e Crimes Virtuais</h3>
+                <p>Garantia de proteção legal rigorosa contra o cyberbullying, o aliciamento virtual (grooming), o acesso a conteúdos impróprios e a exposição não autorizada de imagens de menores.</p>
+            </div>
+
+            <div class="item-direito">
+                <h3>Uso Saudável e Consciência Digital</h3>
+                <p>Direito ao acesso seguro à tecnologia para fins de educação e desenvolvimento, sendo dever dos responsáveis orientar e mediar o tempo de tela para evitar prejuízos à saúde mental e social.</p>
+            </div>
+        </section>
+              
+        <section class="banner-fale-conosco">
+            <div class="fale-conosco-texto">
+                <span class="icone-ajuda">🛡️</span>
+                <div>
+                    <h3>Não encontrou o que precisa?</h3>
+                    <p>Fale conosco e nossa equipe vai te ajudar.</p>
+                </div>
+            </div>
+            <a href="#" class="btn-fale-conosco">FALE CONOSCO</a>
+        </section>
+
+    </main>
+          <footer>
+           <div class="footer-sections">
+
+            <div class="footer-column logo-footer">
+               <IMG SRC="baixados.png" ALT="LOGO"> 
+                <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+          </div>
+
+          <div class="footer-column contact-info">
+            <H4>CONTATOS</H4>
+            <ul>
+            <LI><A href="tel:+55991234567">Telefone: (91) 98489-5280</A></LI>
+            <LI><A href="mailto:contato@conselhotutelarvigia.com">Email: Email:conselhotvg2020@yahoo.com </A></LI>
+            </ul>
+            </div>
+
+            <div class="footer-column atendimento">
+            <H4>ATENDIMENTO</H4>
+            <ul>
+            <LI>TV.São sebastião, 112 - Arapiranga, Vigia-PA, CEP 68780-000</LI>
+            <li>Segunda a Sexta</LI>
+            <li>08:00 - 14:00</li>
+            <li>24 horas pelos meios digitais</li>
+            </ul>
+            </div>
+
+            <div class="footer-column links">
+            <H4>LINKS ÚTEIS</H4>
+            <ul>
+              <li><a href="#">Quem Somos</a></li>
+              <li><a href="#">Denúncias</a></li>
+              <li><a href="#">Direitos</a></li>
+            </ul>
+          </div>
+          </div>
+          <h6>Copyright © 2026 Conselho Tutelar Vigia-Pará. Todos os direitos reservados.</h6>
+        </footer>
+
+        </body>
+</html>

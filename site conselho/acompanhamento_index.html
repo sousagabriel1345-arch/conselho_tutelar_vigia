@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento de Protocolo</title>
+    <link rel="stylesheet" href="style_acompanhamento.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <style>
+        /* --- Estilização e Design Fiel ao Layout --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .logo h6 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .site-header a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .site-header a:hover {
+            color: #38bdf8;
+        }
+
+        .container-acompanhamento {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        .card-acompanhamento {
+            background-color: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            box-sizing: border-box;
+        }
+
+        .card-acompanhamento h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.6rem;
+            color: #22d3ee;
+        }
+
+        .card-acompanhamento p {
+            margin: 0 0 25px 0;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+
+        .form-grupo label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .form-grupo input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: rgba(15, 23, 42, 0.6);
+            color: #ffffff;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-grupo input:focus {
+            border-color: #22d3ee;
+        }
+
+        .btn-buscar {
+            width: 100%;
+            padding: 14px;
+            background-color: #cffafe;
+            color: #0891b2;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-buscar:hover {
+            background-color: #a5f3fc;
+        }
+
+        /* --- Bloco Dinâmico de Exibição do Status --- */
+        .resultado-container {
+            width: 100%;
+            max-width: 550px;
+            margin-top: 25px;
+            display: none; /* Oculto inicialmente */
+        }
+
+        .status-box {
+            background-color: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* Classes de cor para cada tipo de status retornado da nuvem */
+        .status-recebida { background-color: #f59e0b; color: #ffffff; }
+        .status-em-andamento { background-color: #0284c7; color: #ffffff; }
+        .status-concluido { background-color: #10b981; color: #ffffff; }
+
+        .erro-txt {
+            color: #f87171;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <h6>PORTAL DO CIDADÃO</h6>
+            <span>Conselho Tutelar de Vigia</span>
+        </div>
+        <a href="inicio_index.html">Voltar ao Início</a>
+    </header>
+
+    <main class="container-acompanhamento">
+        <section class="card-acompanhamento">
+            <h2>Consultar Andamento</h2>
+            <p>Insira o número do protocolo fornecido durante o registro para verificar a situação atual.</p>
+
+            <form id="formConsultaProtocolo">
+                <div class="form-grupo">
+                    <label for="busca-input">Número do Protocolo</label>
+                    <input type="text" id="busca-input" required placeholder="Digite seu protocolo ex: #DEN-2026-X8983">
+                </div>
+
+                <button type="submit" id="btn-buscar" class="btn-buscar">VERIFICAR STATUS</button>
+            </form>
+            
+            <p id="mensagem-erro" class="erro-txt"></p>
+        </section>
+
+        <section id="resultado-busca" class="resultado-container">
+            <div class="status-box">
+                <h3 style="margin: 0 0 15px 0; font-size: 1.2rem; color: #38bdf8;">Informações do Processo</h3>
+                
+                <p style="margin-bottom: 15px; color: #cbd5e1;">
+                    <strong>Número:</strong> <span id="res-numero" style="color: #ffffff;"></span>
+                </p>
+                
+                <p style="margin-bottom: 15px; color: #cbd5e1;">
+                    <strong>Situação na Nuvem:</strong><br>
+                    <span id="res-badge" class="status-badge"></span>
+                </p>
+                
+                <p style="margin: 0; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;">
+                    Última movimentação registrada em: <span id="res-data" style="color: #cbd5e1;"></span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // CONFIGURAÇÃO CORRIGIDA: Apontando para o ID "site-conselho"
+        const firebaseConfig = {
+            apiKey: "AIzaSyCTZmFHNLomb3zurfEN1A2GsBSVCGeGf8", 
+            authDomain: "site-conselho.firebaseapp.com",
+            projectId: "site-conselho",
+            storageBucket: "site-conselho.appspot.com",
+            messagingSenderId: "181542343066", 
+            appId: "1:181542343066:web:00c5d6743b9947226b6a23",
+            measurementId: "G-0G5V1TCHRM"
+        };
+
+        // Inicializa o Firebase e o Banco Firestore
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Escuta a submissão da busca
+        document.getElementById('formConsultaProtocolo').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const numeroBusca = document.getElementById('busca-input').value.trim();
+            const msgErro = document.getElementById('mensagem-erro');
+            const painelResultado = document.getElementById('resultado-busca');
+            const btnBuscar = document.getElementById('btn-buscar');
+
+            // Limpa estados e exibições anteriores
+            msgErro.style.display = 'none';
+            painelResultado.style.display = 'none';
+            btnBuscar.disabled = true;
+            btnBuscar.textContent = "BUSCANDO NA NUVEM...";
+
+            // COLEÇÃO CORRIGIDA: Alterado de "protocolos" para "denuncias"
+           // Faz a query direta na coleção "denuncias"
+            db.collection("denuncias").doc(numeroBusca).get()
+            .then((doc) => {
+                if (doc.exists) {
+                    const dados = doc.data();
+
+                    // Preenche os campos (Aceita tanto dataAlteracao quanto dataAtualizacao)
+                    document.getElementById('res-numero').textContent = dados.numero || numeroBusca;
+                    document.getElementById('res-data').textContent = dados.dataAtualizacao || dados.dataAlteracao || "Não informada";
+
+                    // Mapeia o visual do Badge
+                    const badge = document.getElementById('res-badge');
+                    badge.className = "status-badge"; 
+
+                    // Converte para minúsculo para evitar problemas se gravou "Concluído" ou "concluido"
+                    const statusLimpo = String(dados.status).toLowerCase().trim();
+
+                    if (statusLimpo === 'recebida') {
+                        badge.textContent = "🟡 Denúncia Recebida";
+                        badge.classList.add('status-recebida');
+                    } else if (statusLimpo === 'em-andamento' || statusLimpo === 'em análise / andamento') {
+                        badge.textContent = "🔵 Em Análise / Andamento";
+                        badge.classList.add('status-em-andamento');
+                    } else if (statusLimpo === 'concluido' || statusLimpo === 'solucionado / concluído') {
+                        badge.textContent = "🟢 Solucionado / Concluído";
+                        badge.classList.add('status-concluido');
+                    } else {
+                        badge.textContent = dados.status;
+                        badge.style.backgroundColor = "#475569";
+                    }
+
+                    // Torna visível o bloco do resultado
+                    painelResultado.style.display = 'block';
+                } else {
+                    msgErro.textContent = "⚠️ Protocolo não encontrado. Verifique se digitou maiúsculas/minúsculas e o '#' corretamente.";
+                    msgErro.style.display = 'block';
+                }
+            })
+            })
+            .catch((error) => {
+                console.error("Erro ao ler dados do Firestore:", error);
+                msgErro.textContent = "❌ Falha ao conectar ao servidor. Verifique sua conexão.";
+                msgErro.style.display = 'block';
+            })
+            .finally(() => {
+                // Restaura o botão ao estado padrão
+                btnBuscar.disabled = false;
+                btnBuscar.textContent = "VERIFICAR STATUS";
+            });
+        ;
+    </script>
+
+</body>
+</html>

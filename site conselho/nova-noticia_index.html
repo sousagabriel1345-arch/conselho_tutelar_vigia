@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Notícia</title>
+    <link rel="stylesheet" href="style_noticias.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h2>Portal CTR</h2>
+        <div>
+            <span>Olá, Administrador | </span>
+            <a href="inicio_index.html" style="text-decoration: underline;">Sair</a>
+        </div>
+    </header>
+
+    <div class="container-geral">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="noticias.html">📰 Notícias em Destaque</a></li>
+                <li><a href="nova-noticia.html" class="active">➕ Nova Notícia</a></li>
+            </ul>
+        </aside>
+
+        <main class="conteudo-principal">
+            <h2 class="titulo-secao">Publicar Nova Notícia</h2>
+
+          <form id="formNoticia">
+    <div class="grupo-input" style="margin-bottom: 15px;">
+        <label for="titulo" style="display:block; font-weight:bold; margin-bottom:5px;">Título da Notícia</label>
+        <input type="text" id="titulo" required placeholder="Digite o título..." style="width:100%; padding:8px; border-radius:4px; border:1px solid #ccc;">
+    </div>
+
+    <div class="grupo-input" style="margin-bottom: 15px;">
+        <label for="imagem" style="display:block; font-weight:bold; margin-bottom:5px;">Imagem da Notícia</label>
+        <input type="file" id="imagem" accept="image/*" style="width:100%; padding:5px;">
+    </div>
+    
+    <div class="grupo-input" style="margin-bottom: 15px;">
+        <label for="conteudo" style="display:block; font-weight:bold; margin-bottom:5px;">Conteúdo / Resumo</label>
+        <textarea id="conteudo" required rows="8" placeholder="Digite o conteúdo detalhado da notícia aqui..." style="width:100%; padding:8px; border-radius:4px; border:1px solid #ccc; font-family:inherit; resize:vertical;"></textarea>
+    </div>
+    
+    <button type="submit" class="btn-azul" style="padding:10px 20px; font-weight:bold; cursor:pointer;">Publicar Notícia</button>
+</form>
+
+<h3 style="margin-top: 40px;">Notícias Publicadas</h3>
+<div id="listaGerenciarNoticias" style="margin-top: 20px;"></div>
+
+<script>
+    const formNoticia = document.getElementById('formNoticia');
+    const listaGerenciarNoticias = document.getElementById('listaGerenciarNoticias');
+
+    function carregarNoticiasGerenciador() {
+        if (!listaGerenciarNoticias) return;
+        const noticias = JSON.parse(localStorage.getItem('noticias')) || [];
+        listaGerenciarNoticias.innerHTML = '';
+
+        if (noticias.length === 0) {
+            listaGerenciarNoticias.innerHTML = '<p style="color: #666; font-style: italic;">Nenhuma notícia publicada ainda.</p>';
+            return;
+        }
+
+        noticias.forEach((noticia, index) => {
+            const divCard = document.createElement('div');
+            divCard.style.border = '1px solid #cbd5e1';
+            divCard.style.padding = '15px';
+            divCard.style.marginBottom = '12px';
+            divCard.style.borderRadius = '6px';
+            divCard.style.backgroundColor = '#ffffff';
+            
+            // Verifica se a notícia tem imagem para exibir a miniatura
+            let imgHtml = '';
+            if (noticia.imagem) {
+                imgHtml = `<img src="${noticia.imagem}" style="max-width: 120px; max-height: 80px; display:block; margin-bottom:10px; border-radius:4px; object-fit:cover;">`;
+            }
+
+            divCard.innerHTML = `
+                ${imgHtml}
+                <h4 style="margin-bottom: 5px; color: #1e293b;">${noticia.titulo}</h4>
+                <p style="margin-bottom: 10px; color: #475569; font-size: 0.95rem;">${noticia.conteudo.substring(0, 100)}...</p>
+                <button onclick="excluirNoticia(${index})" style="background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Excluir Notícia</button>
+            `;
+            listaGerenciarNoticias.appendChild(divCard);
+        });
+    }
+
+    if (formNoticia) {
+        formNoticia.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const inputTitulo = document.getElementById('titulo');
+            const inputConteudo = document.getElementById('conteudo');
+            const inputImagem = document.getElementById('imagem');
+
+            const procederSalvamento = (imagemBase64 = "") => {
+                const novaNoticia = { 
+                    titulo: inputTitulo.value, 
+                    conteudo: inputConteudo.value,
+                    imagem: imagemBase64 
+                };
+
+                const noticias = JSON.parse(localStorage.getItem('noticias')) || [];
+                noticias.push(novaNoticia);
+                localStorage.setItem('noticias', JSON.stringify(noticias));
+
+                formNoticia.reset(); 
+                carregarNoticiasGerenciador(); 
+                alert('Notícia publicada com sucesso!');
+            };
+
+            // Se o usuário selecionou uma imagem, converte para Base64 antes de salvar
+            if (inputImagem && inputImagem.files && inputImagem.files[0]) {
+                const leitor = new FileReader();
+                leitor.onloadend = function() {
+                    procederSalvamento(leitor.result); // Salva com a imagem convertida
+                };
+                leitor.readAsDataURL(inputImagem.files[0]);
+            } else {
+                procederSalvamento(); // Salva sem imagem se não escolheu nenhuma
+            }
+        });
+    }
+
+    window.excluirNoticia = function(index) {
+        if (confirm("Deseja realmente apagar esta notícia definitivamente?")) {
+            const noticias = JSON.parse(localStorage.getItem('noticias')) || [];
+            noticias.splice(index, 1);
+            localStorage.setItem('noticias', JSON.stringify(noticias));
+            carregarNoticiasGerenciador();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarNoticiasGerenciador);
+    carregarNoticiasGerenciador();
+</script>
+        </main>
+    </div>
+
+</body>
+</html>

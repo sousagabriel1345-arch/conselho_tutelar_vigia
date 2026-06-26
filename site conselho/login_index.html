@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portal de Notícias</title>
+    <link rel="stylesheet" href="style_noticias.css">
+    <style>
+        /* --- Estilos para o Modal --- */
+        .modal-background {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-conteudo {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+        .modal-conteudo h3 { margin-bottom: 20px; color: #333; }
+        .btn-modal {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .btn-verde { background-color: #27ae60; }
+        .btn-verde:hover { background-color: #219653; }
+        .btn-laranja { background-color: #e67e22; }
+        .btn-laranja:hover { background-color: #d35400; }
+
+        /* --- NOVO CSS: Container do Campo de Senha --- */
+        .senha-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .senha-container input {
+            width: 100%;
+            padding-right: 40px; /* Garante que o texto não fique embaixo do botão */
+        }
+
+        .btn-mostrar-senha {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #777;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-mostrar-senha:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body class="body-login">
+
+    <div class="container-login">
+        <h2>Acesso ao Portal</h2>
+        <p style="margin-bottom: 20px; color: #666;">Digite suas credenciais para gerenciar as notícias</p>
+
+        <form id="formLogin">
+            <div class="grupo-input">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required placeholder="exemple@circle.com">
+            </div>
+
+            <div class="grupo-input">
+                <label for="senha">Senha</label>
+                <div class="senha-container">
+                    <input type="password" id="senha" required placeholder="congi-000">
+                    <button type="button" id="btnVisualizar" class="btn-mostrar-senha" title="Mostrar senha">👁️</button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-azul">Entrar</button>
+        </form>
+    </div>
+
+    <div id="modalEscolha" class="modal-background">
+        <div class="modal-conteudo">
+            <h3>Acesso Permitido!</h3>
+            <p style="margin-bottom: 15px; color: #555;">Selecione para onde deseja ir:</p>
+            <a href="nova-noticia_index.html" class="btn-modal btn-verde">Nova Notícia</a>
+            <a href="painel_conselheiro.html" class="btn-modal btn-laranja">Painel do Conselheiro</a>
+        </div>
+    </div>
+
+    <script>
+        // --- SCRIPT 1: Alternar Visualização da Senha ---
+        const campoSenha = document.getElementById('senha');
+        const btnVisualizar = document.getElementById('btnVisualizar');
+
+        btnVisualizar.addEventListener('click', function () {
+            // Verifica o tipo atual do input
+            if (campoSenha.type === 'password') {
+                campoSenha.type = 'text';
+                btnVisualizar.textContent = '🙈'; // Muda o ícone para um macaco tapando os olhos (ou outro símbolo)
+                btnVisualizar.title = "Esconder senha";
+            } else {
+                campoSenha.type = 'password';
+                btnVisualizar.textContent = '👁️'; // Volta para o olho comum
+                btnVisualizar.title = "Mostrar senha";
+            }
+        });
+
+
+        // --- SCRIPT 2: Validação do Login ---
+        document.getElementById('formLogin').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            const emailCorreto = "conselhotvg2020@yahoo.com";
+            const senhaCorreta = "#conselho_vigia01";
+
+            if (email === emailCorreto && senha === senhaCorreta) {
+                document.getElementById('modalEscolha').style.display = 'flex';
+            } else {
+                alert("E-mail ou senha incorretos! Tente novamente.");
+            }
+        });
+    </script>
+
+</body>
+</html>

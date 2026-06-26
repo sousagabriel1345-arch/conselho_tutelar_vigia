@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Conselho Tutelar</title>
+    
+    <!-- Importando a fonte Anton do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    
+    <!-- Seu arquivo de estilos (sempre depois das fontes) -->
+    <link rel="stylesheet" href="style_inicio.css">
+  </head>
+
+  <body>
+        <header>
+      <DIV CLASS="LOGO">
+        <IMG SRC="baixados.png" ALT="LOGO"> <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+      </DIV>
+          <NAV>
+            <UL>
+              <LI><A href="inicio_index.html">INÍCIO</A></LI>
+              <LI><A href="sobre_index .html">SOBRE NÓS</A></LI>
+              <LI><A href="recursos_index .html">RECURSOS E DIREITOS</A></LI>
+               <li><a href="login_index.html">CONSELHEIROS</a>"</li>
+               <LI><A href="denuncias_index.html"class="btn-denuncia">DENÚNCIAS</A></LI>
+            </UL>
+          </NAV>
+          </HEADER>
+          
+    <main>
+        
+        <section class="banner-principal">
+            <div class="banner-conteudo">
+                <h1>Protegendo os direitos de crianças e adolescentes.</h1>
+                <p>Informação, orientação e denúncias de forma segura e sigilosa.</p>
+                
+                <div class="banner-botoes">
+                    <a href="denuncias_index.html" class="btn-denuncia-menu">
+                        <img src="icone-escudo-branco.png" alt=""> DENUNCIAR AGORA
+                    </a>
+                    <a href="recursos_index .html" class="btn-azul">
+                        <img src="icone-livro-branco.png" alt=""> CONHECER MEUS DIREITOS
+                    </a>
+                </div>
+            </div>
+           
+        </section>
+
+        <section class="secao-servicos">
+            <h2>Nossos Serviços</h2>
+            
+            <div class="servicos-grid">
+                
+                <a href="denuncias_index.html" class="servico-card">
+                    <img src="documento.png" alt="Receber Denúncia">
+                    <h3>Receber Denúncia</h3>
+                    <p>Faça uma denúncia de forma segura, anônima e sigilosa.</p>
+                </a>
+
+            
+                <a href="acompanhamento_index.html"class="servico-card">
+                    <img src="lupa.png" alt="Acompanhamento">
+                    <h3>Acompanhamento</h3>
+                    <p>Acompanhe o andamento da sua denúncia.</p>
+                </a>
+                
+
+                <a href="educacao_index.html" class="servico-card">
+                    <img src="educacao.png" alt="Educação">
+                    <h3>Educação</h3>
+                    <p>Materiais educativos sobre direitos e deveres.</p>
+                </a>
+
+                <a href="recursos_index .html" class="servico-card">
+                    <img src="balanca.png" alt="Direitos">
+                    <h3>Direitos</h3>
+                    <p>Conheça os direitos de crianças e adolescentes.</p>
+                </a>
+
+                    <a href="rede-apoio_index.html" class="servico-card">
+                    <img src="coracao.png" alt="Rede de Apoio">
+                    <h3>Rede de Apoio</h3>
+                    <p>Encontre serviços e instituições que podem ajudar.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="secao-noticias">
+           <div id="feedNoticias">
+    </div>
+
+<script>
+    function carregarFeedNoticias() {
+    const feedNoticias = document.getElementById('feedNoticias');
+    if (!feedNoticias) return;
+
+    const noticias = JSON.parse(localStorage.getItem('noticias')) || [];
+
+    if (noticias.length === 0) {
+        feedNoticias.innerHTML = '<p style="color: #666; text-align: center; padding: 20px; font-style: italic;">Nenhuma notícia publicada no momento.</p>';
+        return;
+    }
+
+    feedNoticias.innerHTML = ''; // Limpa o conteúdo antigo
+
+    noticias.forEach(noticia => {
+        const card = document.createElement('article');
+        
+        // Estilo do container principal
+        card.style.background = '#ffffff';
+        card.style.border = '1px solid #e2e8f0';
+        card.style.borderRadius = '8px';
+        card.style.marginBottom = '25px';
+        card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+        card.style.overflow = 'hidden';
+        card.style.display = 'table'; 
+        card.style.width = '100%';
+
+        // Imagem padrão caso não tenha nenhuma salva
+        const imagemSrc = noticia.imagem ? noticia.imagem : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e2e8f0"/></svg>';
+
+        // Montando as duas colunas estruturadas (SEM O BOTÃO)
+        card.innerHTML = `
+            <div style="display: table-cell; width: 35%; vertical-align: top; background-color: #f8fafc; border-right: 1px solid #e2e8f0;">
+                <img src="${imagemSrc}" alt="Imagem da notícia" style="width: 100%; height: 220px; object-fit: cover; display: block;">
+            </div>
+
+            <div style="display: table-cell; width: 65%; vertical-align: top; padding: 25px;">
+                <h3 style="color: #1e293b; margin: 0 0 12px 0; font-size: 1.4rem; font-weight: bold; line-height: 1.3;">
+                    ${noticia.titulo}
+                </h3>
+                <p style="color: #475569; line-height: 1.6; font-size: 1rem; margin: 0; white-space: pre-wrap;">
+                    ${noticia.conteudo}
+                </p>
+            </div>
+        `;
+        
+        feedNoticias.appendChild(card);
+    });
+}
+
+// Executa automaticamente ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarFeedNoticias);
+carregarFeedNoticias();
+</script>
+
+        <section class="banner-chamada">
+            <div class="chamada-texto">
+                <img src="icone-escudo-azul.png" alt="Escudo">
+                <div>
+                    <h3>Denuncie. Proteja. Transforme.</h3>
+                    <p>Sua atitude pode mudar uma história.</p>
+                </div>
+            </div>
+            <a href="denuncias_index.html" class="btn-fazer-denuncia">FAZER DENÚNCIA</a>
+        </section>
+
+    </main>
+
+          <footer>
+           <div class="footer-sections">
+
+            <div class="footer-column logo-footer">
+               <IMG SRC="baixados.png" ALT="LOGO"> 
+                <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+          </div>
+
+          <div class="footer-column contact-info">
+            <H4>CONTATOS</H4>
+            <ul>
+            <LI><A href="tel:+5591984895280">Telefone: (91) 98489-5280</A></LI>
+            <LI><A href="mailto:contato@conselhotutelarvigia.com">Email:Email:conselhotvg2020@yahoo.com </A></LI>
+            </ul>
+            </div>
+
+            <div class="footer-column atendimento">
+            <H4>ATENDIMENTO</H4>
+            <ul>
+            <LI>TV.São sebastião, 112 - Arapiranga, Vigia-PA, CEP 68780-000</LI>
+            <li>Segunda a Sexta</LI>
+            <li>08:00 - 14:00</li>
+            <li>24 horas pelos meios digitais</li>
+            </ul>
+            </div>
+
+            <div class="footer-column links">
+            <H4>LINKS ÚTEIS</H4>
+            <ul>
+              <li><a href="#">Quem Somos</a></li>
+              <li><a href="#">Denúncias</a></li>
+              <li><a href="#">Direitos</a></li>
+            </ul>
+          </div>
+          </div>
+          <h6>Copyright © 2026 Conselho Tutelar Vigia-Pará. Todos os direitos reservados.</h6>
+        </footer>
+<script>
+    const urlRSS = "https://www.gov.br/mds/pt-br/noticias/noticias/RSS";
+    const urlAPI = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(urlRSS)}`;
+
+    async function carregarNoticiasCidadania() {
+        try {
+            const resposta = await fetch(urlAPI);
+            const dados = await resposta.json();
+            
+            if (dados.status === 'ok') {
+                const grid = document.getElementById('noticias-grid');
+                grid.innerHTML = ''; // Limpa o grid
+
+                // Pega as 3 notícias mais recentes do Ministério
+                const ultimasNoticias = dados.items.slice(0, 3);
+
+                ultimasNoticias.forEach(noticia => {
+                    // Pega a imagem da notícia ou usa uma padrão caso não encontre
+                    const imagem = noticia.thumbnail || "noticia1.jpg"; 
+                    
+                    grid.innerHTML += `
+                        <article class="noticia-card">
+                            <div class="noticia-imagem">
+                                <img src="${imagem}" alt="${noticia.title}">
+                            </div>
+                            <div class="noticia-corpo">
+                                <h3>${noticia.title}</h3>
+                                <span class="noticia-data">Publicado recentemente</span>
+                                <p>${noticia.description.substring(0, 150)}...</p>
+                                <a href="${noticia.link}" target="_blank" class="link-ler-mais">Ler mais &rarr;</a>
+                            </div>
+                        </article>
+                    `;
+                });
+            }
+        } catch (erro) {
+            console.error("Não foi possível carregar as notícias automáticas:", erro);
+        }
+    }
+
+    window.onload = carregarNoticiasCidadania;
+</script>
+        </body>
+</html>

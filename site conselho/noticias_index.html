@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Notícias</title>
+    <link rel="stylesheet" href="style_noticias.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h2>Portal CTR</h2>
+        <div>
+            <span>Olá, Administrador | </span>
+            <a href="login.html" style="text-decoration: underline;">Sair</a>
+        </div>
+    </header>
+
+    <div class="container-geral">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="noticias.html" class="active">📰 Notícias em Destaque</a></li>
+                <li><a href="nova-noticia.html">➕ Nova Notícia</a></li>
+                <li><a href="#">📊 Serviços</a></li>
+                <li><a href="#">🛡️ Denúncias</a></li>
+            </ul>
+        </aside>
+
+        <main class="conteudo-principal">
+            <h2 class="titulo-secao">Notícias em Destaque</h2>
+
+            <div class="grid-noticias">
+                
+                <article class="card-noticia">
+                    <img src="https://picsum.photos/400/250?random=1" alt="Campanha Maio Laranja">
+                    <div class="card-corpo">
+                        <h3>Campanha Maio Laranja reforça proteção à infância</h3>
+                        <p>A campanha Maio Laranja chama a atenção para o combate ao abuso e à exploração sexual de crianças e adolescentes...</p>
+                        <a href="#" class="link-ler-mais">Ler mais →</a>
+                    </div>
+                </article>
+
+                <article class="card-noticia">
+                    <img src="https://picsum.photos/400/250?random=2" alt="Volta às aulas">
+                    <div class="card-corpo">
+                        <h3>Volta às aulas: dicas para proteger seus filhos</h3>
+                        <p>Veja orientações importantes para um retorno às aulas mais seguro e saudável para as crianças da nossa rede...</p>
+                        <a href="#" class="link-ler-mais">Ler mais →</a>
+                    </div>
+                </article>
+
+                <article class="card-noticia">
+                    <img src="https://picsum.photos/400/250?random=3" alt="Parceria Local">
+                    <div class="card-corpo">
+                        <h3>Parceria fortalece rede de proteção local</h3>
+                        <p>Novos parceiros se unem ao Conselho Tutelar para ampliar o atendimento e a eficácia das ações na região.</p>
+                        <a href="#" class="link-ler-mais">Ler mais →</a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+<!-- Cole este script no final do seu arquivo noticias.html, antes do </body> -->
+<script>
+    // URL do feed de notícias do portal de desenvolvimento/cidadania (exemplo ilustrativo)
+    const urlRSS = "https://www.gov.br/mds/pt-br/noticias/noticias/RSS";
+    
+    // Usamos um conversor gratuito para evitar bloqueio de segurança (CORS)
+    const urlAPI = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(urlRSS)}`;
+
+    async function carregarNoticiasGoverno() {
+        try {
+            const resposta = await fetch(urlAPI);
+            const dados = await resposta.json();
+            
+            if (dados.status === 'ok') {
+                const gridNoticias = document.querySelector('.grid-noticias');
+                // Limpa os cards estáticos que criamos antes
+                gridNoticias.innerHTML = ''; 
+
+                // Pega as 3 primeiras notícias do ministério
+                const ultimasNoticias = dados.items.slice(0, 3);
+
+                ultimasNoticias.forEach(noticia => {
+                    // Tenta pegar a imagem da notícia, se não tiver usa uma padrão
+                    const imagem = noticia.thumbnail || 'https://picsum.photos/400/250';
+                    
+                    const cardHTML = `
+                        <article class="card-noticia">
+                            <img src="${imagem}" alt="${noticia.title}">
+                            <div class="card-corpo">
+                                <h3>${noticia.title}</h3>
+                                <p>${noticia.description.substring(0, 150)}...</p>
+                                <a href="${noticia.link}" target="_blank" class="link-ler-mais">Ler no Ministério →</a>
+                            </div>
+                        </article>
+                    `;
+                    gridNoticias.innerHTML += cardHTML;
+                });
+            }
+        } catch (erro) {
+            console.error("Erro ao buscar notícias do ministério:", erro);
+        }
+    }
+
+    // Executa a função assim que a página carregar
+    window.onload = carregarNoticiasGoverno;
+</script>
+</body>
+</html>

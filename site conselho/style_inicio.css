@@ -1,0 +1,634 @@
+
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+.body {
+    background-color: #f8fafc;
+    color: #333333;
+}
+
+main {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+}
+
+/* Títulos padrão das seções */
+.secao-servicos h2,
+.noticias-header h2 {
+    color: #0f2c59;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO DO SITE (MENU DE NAVEGAÇÃO)
+   ========================================================================== */
+.site-header {
+    background-color: #ffffff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.logo h6 {
+    color: #0f2c59;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.logo h6 span {
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.site-header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.site-header nav ul li a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.site-header nav ul li a:hover,
+.site-header nav ul li a.active {
+    color: #0250c5; /* Cor de destaque para a página atual */
+}
+.btn-azul{
+    background-color: #0250c5;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+}
+/* Botão de Denúncias no Menu */
+.btn-denuncia-menu {
+    background-color: #e74c3c;
+    color: #ffffff !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2);
+    transition: transform 0.2s, background-color 0.2s !important;
+}
+
+.btn-denuncia-menu:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. BANNER PRINCIPAL (HERO SECTION)
+   ========================================================================== */
+.banner-principal {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('img-criança.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    gap: 20px;
+    padding: 40px 5%;
+    min-height: 300px;
+}
+
+.banner-conteudo {
+    flex: 1;
+}
+
+.banner-conteudo h1 {
+    font-size: 40px;
+    color: #0f2c59;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.banner-conteudo p {
+    font-size: 16px;
+    color: #050505;
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+.banner-botoes {
+    display: flex;
+    gap: 15px;
+}
+
+.banner-botoes a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.banner-botoes a img {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-hero-denunciar {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn-hero-direitos {
+    background: linear-gradient(135deg, #0250c5 0%, #003a91 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(2, 80, 197, 0.3);
+}
+
+.banner-botoes a:hover {
+    transform: translateY(-2px);
+}
+
+.banner-imagem {
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.banner-imagem img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 20px;
+    /* Se quiser a imagem recortada em formato redondo/fundo transparente igual ao mockup, remova a borda */
+}
+
+/* ==========================================================================
+   4. SEÇÃO NOSSOS SERVIÇOS (5 CARDS HORIZONTAIS)
+   ========================================================================== */
+.secao-servicos {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.servicos-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.servico-card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 30px 15px;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    text-decoration: none; /* Caso o card seja um link <a> */
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito sutil ao passar o mouse nos blocos de serviço */
+.servico-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(2, 80, 197, 0.06);
+}
+
+.servico-card img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.servico-card h3 {
+    font-size: 15px;
+    color: #0f2c59;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.servico-card p {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. SEÇÃO NOTÍCIAS EM DESTAQUE (CARDS VERTICAIS)
+   ========================================================================== */
+.secao-noticias {
+    margin-bottom: 50px;
+}
+
+.noticias-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-ver-todas {
+    color: #0250c5;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.noticias-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.noticia-card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    overflow: hidden; /* Corta a imagem nas bordas redondas do card */
+    display: flex;
+    flex-direction: column;
+}
+
+.noticia-imagem {
+    height: 180px;
+    width: 100%;
+}
+
+.noticia-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.noticia-corpo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.noticia-corpo h3 {
+    font-size: 15px;
+    color: #0f2c59;
+    margin-bottom: 6px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.noticia-data {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.noticia-corpo p {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.link-ler-mais {
+    color: #0250c5;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: auto; /* Alinha o botão sempre no final do bloco */
+    display: inline-block;
+}
+
+/* ==========================================================================
+   6. BANNER DE CHAMADA INFERIOR (CTA AZUL)
+   ========================================================================== */
+.banner-chamada {
+    background: linear-gradient(135deg, #0250c5 0%, #003a91 100%);
+    border-radius: 14px;
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(2, 80, 197, 0.2);
+}
+
+.chamada-texto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chamada-texto img {
+    width: 35px;
+    height: 35px;
+}
+
+.chamada-texto h3 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 3px;
+    font-weight: 700;
+}
+
+.chamada-texto p {
+    font-size: 12px;
+    color: #cbdcf7;
+}
+
+/* Botão Branco Fazer Denúncia */
+.btn-fazer-denuncia {
+    background-color: #ffffff;
+    color: #0250c5;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-fazer-denuncia:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (MOBILE / TELAS PEQUENAS)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .banner-principal {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 0;
+    }
+    .banner-imagem {
+        justify-content: center;
+    }
+    .banner-botoes {
+        justify-content: center;
+    }
+    .servicos-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .servico-card {
+        min-width: 200px; /* Evita que os 5 quebrem esmagados */
+    }
+    .noticias-grid, 
+    .banner-chamada {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .chamada-texto {
+        flex-direction: column;
+        text-align: center;
+    }
+    .btn-fazer-denuncia {
+        width: 100%;
+        text-align: center;
+    }
+}
+header {  
+  display:flex;
+  justify-content:space-between;
+  background:#ffffff;
+  align-items:center;
+  padding:5px 5px;
+  border-bottom:1px solid #440000;
+}
+.LOGO {
+  display:flex;
+  align-items:center;
+  gap: 10pxpx;
+}
+.LOGO img {
+  width: 50px;
+  height:auto;
+}
+
+.LOGO h6 {
+  font-size:16px;
+  color: #000000;
+  margin:0;
+  line-height:1.2;
+}
+nav ul {
+  display:flex;
+  align-items: center;
+  list-style:none;
+  gap:25px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration:none;
+  color:#07101f;
+  font-weight:bold;
+  font-size:16px;
+}
+
+nav a:hover {
+  color:#440000;
+}
+.btn-denuncia {
+  background-color: #d32f2f;
+  color: #fff !important;
+
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:0.3s;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-denuncia:hover {
+  background-color: #b71c1c;
+  color: #fff !important;
+}
+.banner-01 {
+  align-items:left;
+  border:1px solid #440000;
+  padding:70px 2%;
+  text-align:left;
+  background-image:url('img-criança.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.banner-01 h1 {
+  margin-bottom: 20px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+}
+.banner-01 p {
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #0a0808;
+  max-width: 600px;
+  margin-left: 0;
+}
+/* Configuração geral dos botões dentro do banner-01 */
+.banner-01 button {
+    font-family: 'Anton', sans-serif; /* Aplica a fonte Anton nos botões */
+    border: none;                     /* Remove a borda padrão chata do HTML */
+    padding: 12px 30px;               /* Espaçamento interno (cima/baixo e lados) */
+    border-radius: 5px;              /* Deixa os cantos totalmente arredondados */
+    cursor: pointer;                  /* Faz o ponteiro do mouse virar a "mãozinha" */
+    margin: 0 10px;                   /* Cria um espaçamento entre um botão e outro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para dar efeito de clique */
+    transition: transform 0.2s, background-color 0.2s; /* Transição suave para efeitos visuais */
+    margin-right: 15px;                /* Garante que os botões tenham um tamanho mínimo */
+  }
+
+/* Estilo do texto (links) que ficam dentro dos botões */
+.banner-01 button a {
+    color: #ffffff !important;        /* Força o texto a ficar totalmente branco */
+    text-decoration: none;            /* Remove o sublinhado padrão dos links */
+    font-size: 18px;                  /* Ajusta o tamanho da letra */
+    text-transform: uppercase;         /* Garante que o texto fique em maiúsculo */
+    display: inline-block;
+    width: 100%;
+}
+
+/* --- CORES INDIVIDUAIS DE CADA BOTÃO --- */
+
+/* 1. Botão de Denúncia (Vermelho/Rosa) */
+.banner-01 button:nth-of-type(1) {
+    background-color: #e71616; /* Tom de vermelho suave idêntico ao da imagem */
+}
+
+/* 2. Botão de Direitos (Azul) */
+.banner-01 button:nth-of-type(2) {
+    background-color: #0d3655; /* Tom de azul idêntico ao da imagem */
+}
+
+/* --- EFEITO AO PASSAR O MOUSE (HOVER) --- */
+.banner-01 button:hover {
+    transform: scale(1.05); /* O botão cresce levemente ao passar o mouse */
+}
+
+.banner-02 h1{
+  margin-bottom: 5px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+  text-align:center;
+  margin-top: 20px;
+}
+  footer {
+    background:#082b5a;
+    color:#fff;
+    text-align:left;
+    padding:40px 30px;
+    border-top:1px solid #140101;
+  }
+footer h6 {
+  text-align:center;
+  margin-top:10px;
+  margin-bottom:-30px;
+  width:100%;
+  border-top:2px solid rgba(255, 255, 255, 0.849);
+  padding-top:10px;
+  color: #fff;
+}
+.footer-sections {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:40px;
+}
+.footer-column {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+   font-size:14px;
+  color: #fff;
+  margin:0;
+  line-height:1.2;
+  min-width:220px;
+
+}
+.footer-column h4 {
+  margin-bottom: 15px;
+  color: #fff;
+  margin:0 0 10px 0;
+  font-size:16px;
+  font-weight:bold;
+}
+.footer-column ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.footer-column li {
+  margin-bottom:10px;
+}
+.footer-column a {
+  text-decoration:none;
+  color:#fff;
+}
+.footer-column a:hover {
+  text-decoration:underline;
+  opacity:0.8;
+}
+.logo-footer img {
+  align-self:center;
+  width: 70px;
+  margin-bottom: 10px;
+
+}
+.logo-footer h6 {
+  color: #fff;
+  margin: 10px 0 0 0;
+}

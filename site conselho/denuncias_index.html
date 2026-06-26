@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Conselho Tutelar</title>
+    
+    <!-- Importando a fonte Anton do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    
+    <!-- Seu arquivo de estilos (sempre depois das fontes) -->
+    <link rel="stylesheet" href="style_denuncias.css">
+  </head>
+
+  <body>
+        <header>
+      <DIV CLASS="LOGO">
+        <IMG SRC="baixados.png" ALT="LOGO"> <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+      </DIV>
+          <NAV>
+            <UL>
+              <LI><A href="inicio_index.html">INÍCIO</A></LI>
+              <LI><A href="sobre_index .html">SOBRE NÓS</A></LI>
+              <LI><A href="recursos_index .html">RECURSOS E DIREITOS</A></LI>
+               <LI><A href="denuncias_index.html"class="btn-denuncia">DENÚNCIAS</A></LI>
+            </UL>
+          </NAV>
+          </HEADER>
+          <!-- 1. CABEÇALHO VERDE (BANNER) -->
+    <header class="denuncia-header">
+        <div class="header-conteudo">
+            <h1>Canal de Denúncia</h1>
+            <p>Sigilo, seguro e anônimo</p>
+        </div>
+        <div class="header-icone">
+            <img src="icone-escudo.png" alt="Ícone de Escudo Seguro">
+        </div>
+    </header>
+
+    <main class="container-principal">
+        
+        <!-- 2. BANNER DE ALERTA (AVISO DE SIGILO) -->
+        <div class="alerta-sigilo">
+            <img src="icone-cadeado.png" alt="Cadeado">
+            <div class="alerta-texto">
+                <strong>Sua denúncia é sigilosa e pode ser feita de forma anônima.</strong>
+                <p>Todas as informações são protegidas e utilizadas apenas para garantir a proteção de crianças e adolescentes.</p>
+            </div>
+        </div>
+
+        <!-- 3. CORPO PRINCIPAL (FORMULÁRIO + TELEFONES) -->
+        <div class="conteudo-layout">
+            
+            <!-- COLUNA ESQUERDA: FORMULÁRIO -->
+            <section class="secao-formulario">
+                <h2>Faça sua denúncia</h2>
+                
+                <form action="https://formspree.io/f/mvznnnez" method="POST">
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/inicio_index.html">
+                    <!-- Campo 1: Relato -->
+                    <div class="campo-grupo">
+                        <div class="campo-icone">
+                            <img src="icone-relato.png" alt="Relato">
+                        </div>
+                        <div class="campo-input">
+                            <label for="relato">O que aconteceu? (Relato)</label>
+                            <textarea id="relato" name="relato" placeholder="Descreva o que está acontecendo..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Campo 2: Local -->
+                    <div class="campo-grupo">
+                        <div class="campo-icone">
+                            <img src="icone-local.png" alt="Local">
+                        </div>
+                        <div class="campo-input">
+                            <label for="local">Onde aconteceu? (Local)</label>
+                            <input type="text" id="local" name="local" placeholder="Informe o local do ocorrido..." required>
+                        </div>
+                    </div>
+
+                    <!-- Campo 3: Dados do Denunciado -->
+                    <div class="campo-grupo">
+                        <div class="campo-icone">
+                            <img src="icone-usuario.png" alt="Denunciado">
+                        </div>
+                        <div class="campo-input">
+                            <label for="denunciado">Dados do denunciado (Opcional)</label>
+                            <input type="text" id="denunciado" name="denunciado" placeholder="Nome, apelido ou outras informações...">
+                        </div>
+                    </div>
+
+                    <!-- Campo 4: Seus Dados -->
+                    <div class="campo-grupo">
+                        <div class="campo-icone">
+                            <img src="icone-balao.png" alt="Seus dados">
+                        </div>
+                        <div class="campo-input">
+                            <label for="denunciante">Seu e-mail (Obrigatorio para retorno)</label required>
+                            <input type="email" id="denunciante" name="_replyto" placeholder="sousagabriel1345@gmail.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Checkbox de Acompanhamento -->
+                    <div class="campo-checkbox">
+                        <input type="checkbox" id="acompanhamento" name="acompanhamento">
+                        <label for="acompanhamento">Quero receber acompanhamento da minha denúncia.</label>
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="botoes-acao">
+                        <button type="submit" class="btn-enviar">
+                            <img src="icone-aviao.png" alt=""> ENVIAR DENÚNCIA
+                        </button>
+                        <button type="reset" class="btn-limpar">LIMPAR FORMULÁRIO</button>
+                    </div>
+
+                </form>
+            </section>
+
+            <!-- COLUNA DIREITA: TELEFONES IMPORTANTES -->
+            <aside class="barra-telefones">
+                <h2>Telefones Importantes</h2>
+                
+                <div class="lista-telefones">
+                    <!-- Disque 100 -->
+                    <div class="telefone-card">
+                        <div class="tel-info">
+                            <img src="icone-d100.png" alt="Disque 100">
+                            <div>
+                                <strong>Disque 100</strong>
+                                <p>Direitos Humanos</p>
+                            </div>
+                        </div>
+                        <span class="numero-destaque num-laranja">100</span>
+                    </div>
+
+                    <!-- Polícia Militar -->
+                    <div class="telefone-card">
+                        <div class="tel-info">
+                            <img src="icone-pm.png" alt="PM">
+                            <div>
+                                <strong>Polícia Militar</strong>
+                            </div>
+                        </div>
+                        <span class="numero-destaque num-azul">190</span>
+                    </div>
+
+                    <!-- Conselho Tutelar -->
+                    <div class="telefone-card">
+                        <div class="tel-info">
+                            <img src="icone-ct.png" alt="Conselho Tutelar">
+                            <div>
+                                <strong>Conselho Tutelar</strong>
+                                <p>Vigia/Pará</p>
+                            </div>
+                        </div>
+                        <div class="contatos-fixos">
+                            <p class="tel-fixo">📞 (91) 8489-5280</p>
+                        </div>
+                    </div>
+
+                    <!-- Emergência -->
+                    <div class="telefone-card">
+                        <div class="tel-info">
+                            <img src="icone-emergencia.png" alt="Emergência">
+                            <div>
+                                <strong>Emergência</strong>
+                                <p>Samu / Bombeiros</p>
+                            </div>
+                        </div>
+                        <span class="numero-destaque num-roxo">192</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- 4. RODAPÉ DE BENEFÍCIOS (3 COLUNAS INFERIORES) -->
+        <section class="beneficios-rodape">
+            <div class="beneficio-item">
+                <img src="icone-escudo-mini.png" alt="Sigilo">
+                <div>
+                    <h3>Sigilo Garantido</h3>
+                    <p>Suas informações estão protegidas por lei.</p>
+                </div>
+            </div>
+
+            <div class="beneficio-item">
+                <img src="icone-coracao-maos.png" alt="Humanizado">
+                <div>
+                    <h3>Atendimento Humanizado</h3>
+                    <p>Nossa equipe está pronta para acolher e orientar.</p>
+                </div>
+            </div>
+
+            <div class="beneficio-item">
+                <img src="icone-pessoas.png" alt="Sem medo">
+                <div>
+                    <h3>Denuncie sem Medo</h3>
+                    <p>Você pode ajudar a proteger uma vida.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+          <footer>
+           <div class="footer-sections">
+
+            <div class="footer-column logo-footer">
+               <IMG SRC="baixados.png" ALT="LOGO"> 
+                <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+          </div>
+
+          <div class="footer-column contact-info">
+            <H4>CONTATOS</H4>
+            <ul>
+            <LI><A href="tel:+5591984895280">Telefone: (91) 98489-5280</A></LI>
+            <LI><A href="mailto:conselhotvg2020@yahoo.com">Email:conselhotvg2020@yahoo.com</A></LI>
+            </ul>
+            </div>
+
+            <div class="footer-column atendimento">
+            <H4>ATENDIMENTO</H4>
+            <ul>
+            <LI>TV.São sebastião, 112 - Arapiranga, Vigia-PA, CEP 68780-000</LI>
+            <li>Segunda a Sexta</LI>
+            <li>08:00 - 14:00</li>
+            <li>24 horas pelos meios digitais</li>
+            </ul>
+            </div>
+
+            <div class="footer-column links">
+            <H4>LINKS ÚTEIS</H4>
+            <ul>
+              <li><a href="#">Quem Somos</a></li>
+              <li><a href="#">Denúncias</a></li>
+              <li><a href="#">Direitos</a></li>
+            </ul>
+          </div>
+          </div>
+          <h6>Copyright © 2026 Conselho Tutelar Vigia-Pará. Todos os direitos reservados.</h6>
+        </footer>
+
+        </body>
+</html>

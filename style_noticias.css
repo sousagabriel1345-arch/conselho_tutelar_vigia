@@ -194,3 +194,71 @@ a {
     height: 150px;
     resize: vertical;
 }
+/* ==========================================================================
+   REGRAS DE RESPONSIVIDADE (ADICIONE NO FINAL DO ARQUIVO)
+   ========================================================================== */
+
+/* Dispositivos Médios e Pequenos (Tablets e Celulares - Telas até 768px) */
+@media (max-width: 768px) {
+    
+    /* Layout Geral (Navbar e Sidebar) */
+    .container-geral {
+        flex-direction: column; /* Empilha a sidebar e o conteúdo principal */
+        min-height: auto;
+    }
+
+    .sidebar {
+        width: 100%; /* Ocupa a largura total na parte superior */
+        padding: 15px;
+    }
+
+    .sidebar ul {
+        display: flex; /* Transforma o menu vertical em horizontal */
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 0; /* Remove a margem antiga */
+    }
+
+    .sidebar ul li a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .conteudo-principal {
+        padding: 20px 15px; /* Reduz o espaçamento nas laterais */
+    }
+
+    /* Tela de Login */
+    .container-login {
+        max-width: 90%; /* Evita que o card de login cole nas bordas do celular */
+        padding: 30px 20px;
+    }
+
+    /* Grid de Notícias */
+    .grid-noticias {
+        grid-template-columns: 1fr; /* Força os cards a ficarem em coluna única no mobile */
+        gap: 15px;
+    }
+}
+
+/* Dispositivos Muito Pequenos (Celulares compactos - Telas até 480px) */
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column; /* Empilha a marca e o botão "Sair" */
+        gap: 10px;
+        text-align: center;
+    }
+
+    .sidebar ul {
+        flex-direction: column; /* No celular bem pequeno, o menu volta a ser lista */
+        width: 100%;
+    }
+
+    .sidebar ul li a {
+        text-align: center;
+    }
+}

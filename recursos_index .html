@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <!-- A LINHA ABAIXO É O QUE FALTA PARA ATIVAR O MODO CELULAR NESTA PÁGINA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Conselho Tutelar</title>
     
     <!-- Importando a fonte Anton do Google Fonts -->
@@ -9,25 +12,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     
-    <!-- Seu arquivo de estilos (sempre depois das fontes) -->
+    <!-- Seu arquivo de estilos -->
     <link rel="stylesheet" href="style_recursos.css">
   </head>
 
   <body>
-        <header>
-      <DIV CLASS="LOGO">
-        <IMG SRC="baixados.png" ALT="LOGO"> <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
-      </DIV>
-          <NAV>
-            <UL>
-              <LI><A href="index.html">INÍCIO</A></LI>
-              <LI><A href="sobre_index .html">SOBRE NÓS</A></LI>
-              <LI><A href="recursos_index .html">RECURSOS E DIREITOS</A></LI>
-               <LI><A href="denuncias_index.html"class="btn-denuncia">DENÚNCIAS</A></LI>
-            </UL>
-          </NAV>
-          </HEADER>
-<selection class="recursos-header">
+    <header>
+      <div class="LOGO">
+        <img src="baixados.png" alt="LOGO"> <h6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</h6>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">INÍCIO</a></li>
+          <li><a href="sobre_index .html">SOBRE NÓS</a></li>
+          <li><a href="recursos_index .html">RECURSOS E DIREITOS</a></li>
+          <li><a href="denuncias_index.html" class="btn-denuncia">DENÚNCIAS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="recursos-header">
         <div class="header-conteudo">
             <h1>Direitos e Recursos</h1>
             <p>Informação é proteção. Conheça seus direitos, recursos e materiais educativos.</p>
@@ -35,7 +39,8 @@
         <div class="header-icone">
             <img src="icone-livro.png" alt="Ícone de Livro Aberto">
         </div>
-    </selection>
+    </section>
+
     <style>
         /* --- Configurações Gerais e Cores --- */
         :root {
@@ -72,27 +77,16 @@
             padding: 0 20px;
         }
 
-        /* --- Cabeçalho --- */
-        header {
-            background-color: var(--white);
-            color: #ffffff;
-            padding: 40px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--accent-blue);
+        /* --- Estilos Base para Layout de Desktop --- */
+        .recursos-header {
+            background-color: #4f46e5;
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        header p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-        }
-
-        /* --- Seção de Introdução --- */
         .intro-box {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -109,7 +103,6 @@
             margin-bottom: 5px;
         }
 
-        /* --- Estrutura das Seções de Direitos --- */
         .secao-recursos {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -128,12 +121,10 @@
             font-weight: bold;
         }
 
-        /* Cores temáticas para cada grande bloco */
         .titulo-secao.fundamentais { color: var(--accent-blue); border-color: var(--accent-blue); }
         .titulo-secao.protecao { color: var(--accent-green); border-color: var(--accent-green); }
         .titulo-secao.digital { color: var(--accent-purple); border-color: var(--accent-purple); }
 
-        /* --- Lista de Itens de Direitos Simplificados --- */
         .item-direito {
             margin-bottom: 20px;
             padding-bottom: 15px;
@@ -161,7 +152,6 @@
             line-height: 1;
         }
 
-        /* Cores das bolinhas marcadoras */
         .fundamentais-lista h3::before { color: var(--accent-blue); }
         .protecao-lista h3::before { color: var(--accent-green); }
         .digital-lista h3::before { color: var(--accent-purple); }
@@ -172,33 +162,47 @@
             padding-left: 18px;
         }
 
-        /* --- Rodapé --- */
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-light);
-            font-size: 0.85rem;
+        .banner-fale-conosco {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e0e7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
         }
-              /* ==========================================================================
+
+        .fale-conosco-texto {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-fale-conosco {
+            background: #4f46e5;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
            REGRAS PARA DISPOSITIVOS MÓVEIS (TELAS ATÉ 768px)
            ========================================================================== */
         @media (max-width: 768px) {
             
-            /* 1. Alinhamento e Ajuste do Menu Superior Principal */
-            header:not(.recursos-header) {
+            header {
                 flex-direction: column !important;
                 text-align: center !important;
                 padding: 15px 10px !important;
-                height: auto !important;
+                background-color: white !important;
             }
 
             header .LOGO {
                 margin-bottom: 15px !important;
                 justify-content: center !important;
                 display: flex !important;
-                align-items: center !important;
             }
 
             nav ul {
@@ -221,9 +225,8 @@
                 color: var(--primary-dark) !important;
             }
 
-            /* 2. Ajuste do Banner Secundário (Recursos Header) */
             .recursos-header {
-                flex-direction: column-reverse !important; /* Coloca a imagem/ícone acima do texto no celular */
+                flex-direction: column-reverse !important;
                 text-align: center !important;
                 padding: 30px 15px !important;
                 gap: 15px;
@@ -234,16 +237,15 @@
             }
 
             .header-icone img {
-                max-width: 80px !important; /* Reduz o tamanho do ícone do livro no celular */
+                max-width: 80px !important;
             }
 
-            /* 3. Containers e Caixas de Texto */
             .container {
                 padding: 0 15px !important;
             }
 
             .secao-recursos {
-                padding: 20px 15px !important; /* Dá mais espaço interno para o texto respirar */
+                padding: 20px 15px !important;
                 margin-bottom: 20px !important;
             }
 
@@ -252,11 +254,10 @@
             }
 
             .item-direito p {
-                padding-left: 0 !important; /* Remove o recuo grande no celular para aproveitar a tela */
+                padding-left: 0 !important;
                 margin-top: 5px;
             }
 
-            /* 4. Banner Fale Conosco */
             .banner-fale-conosco {
                 flex-direction: column !important;
                 text-align: center !important;
@@ -274,25 +275,12 @@
                 text-align: center !important;
             }
 
-            /* 5. Rodapé (Footer) Estrutura */
             .footer-sections {
                 flex-direction: column !important;
                 text-align: center !important;
                 gap: 30px !important;
-                padding: 30px 15px !important;
-            }
-
-            .footer-column {
-                width: 100% !important;
-            }
-
-            .logo-footer {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
             }
         }
-
     </style>
 </head>
 <body>
@@ -338,7 +326,7 @@
 
             <div class="item-direito">
                 <h3>Prevenção contra a Negligência e Abuso</h3>
-                <p>Nenhuma criança ou adolescente pode ser objeto de qualquer tipo de negligência, discriminação, exploração, violência, crueldade ou opressão por parte de adultos ou responsáveis.</p>
+                <p>Nenhuma criança ou adolescentede pode ser objeto de qualquer tipo de negligência, discriminação, exploração, violência, crueldade ou opressão por parte de adultos ou responsáveis.</p>
             </div>
         </section>
 
@@ -373,43 +361,43 @@
         </section>
 
     </main>
-          <footer>
-           <div class="footer-sections">
 
-            <div class="footer-column logo-footer">
-               <IMG SRC="baixados.png" ALT="LOGO"> 
-                <H6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</H6>
+    <footer>
+       <div class="footer-sections">
+          <div class="footer-column logo-footer">
+             <img src="baixados.png" alt="LOGO"> 
+              <h6>CONSELHO TUTELAR<BR>(VIGIA-PARÁ)</h6>
           </div>
 
           <div class="footer-column contact-info">
-            <H4>CONTATOS</H4>
+            <h4>CONTATOS</h4>
             <ul>
-            <LI><A href="tel:+55991234567">Telefone: (91) 98489-5280</A></LI>
-            <LI><A href="mailto:contato@conselhotutelarvigia.com">Email: Email:conselhotvg2020@yahoo.com </A></LI>
+                <li><a href="tel:+5591984895280">Telefone: (91) 98489-5280</a></li>
+                <li><a href="mailto:conselhotvg2020@yahoo.com">Email: conselhotvg2020@yahoo.com</a></li>
             </ul>
-            </div>
+          </div>
 
-            <div class="footer-column atendimento">
-            <H4>ATENDIMENTO</H4>
+          <div class="footer-column atendimento">
+            <h4>ATENDIMENTO</h4>
             <ul>
-            <LI>TV.São sebastião, 112 - Arapiranga, Vigia-PA, CEP 68780-000</LI>
-            <li>Segunda a Sexta</LI>
-            <li>08:00 - 14:00</li>
-            <li>24 horas pelos meios digitais</li>
+                <li>TV. São Sebastião, 112 - Arapiranga, Vigia-PA, CEP 68780-000</li>
+                <li>Segunda a Sexta</li>
+                <li>08:00 - 14:00</li>
+                <li>24 horas pelos meios digitais</li>
             </ul>
-            </div>
+          </div>
 
-            <div class="footer-column links">
-            <H4>LINKS ÚTEIS</H4>
+          <div class="footer-column links">
+            <h4>LINKS ÚTEIS</h4>
             <ul>
               <li><a href="#">Quem Somos</a></li>
               <li><a href="#">Denúncias</a></li>
               <li><a href="#">Direitos</a></li>
             </ul>
           </div>
-          </div>
-          <h6>Copyright © 2026 Conselho Tutelar Vigia-Pará. Todos os direitos reservados.</h6>
-        </footer>
-
-        </body>
+       </div>
+       <h6 style="text-align: center; margin-top: 20px; color: #64748b;">Copyright © 2026 Conselho Tutelar Vigia-Pará. Todos os direitos reservados.</h6>
+    </footer>
+  </body>
 </html>
+

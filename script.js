@@ -1,14 +1,18 @@
 document.getElementById('form-denuncia').addEventListener('submit', function(event) {
-    // 1. Bloqueia o recarregamento da página (crucial para o fetch)
+    // Garante o bloqueio do comportamento padrão logo no primeiro milissegundo
     event.preventDefault();
+    event.stopPropagation(); 
 
     const formulario = this;
-    const botaoEnviar = formulario.querySelector('button[type="submit"]');
+    // Busca o botão de enviar de forma genérica
+    const botaoEnviar = formulario.querySelector('[type="submit"]');
     
-    // Desabilita o botão temporariamente para evitar cliques duplos
-    if(botaoEnviar) botaoEnviar.disabled = true;
+    if(botaoEnviar) {
+        botaoEnviar.disabled = true;
+        botaoEnviar.innerText = "Enviando..."; // Dá um feedback visual no celular
+    }
 
-    // 2. Gerador do código de protocolo
+    // Gerador do código de protocolo
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let codigoAleatorio = '';
     for (let i = 0; i < 5; i++) {
@@ -17,10 +21,10 @@ document.getElementById('form-denuncia').addEventListener('submit', function(eve
     const anoAtual = new Date().getFullYear();
     const protocoloFinal = `DEN-${anoAtual}-${codigoAleatorio}`;
 
-    // 3. Captura os dados do formulário para enviar via API
+    // Captura os dados
     const dadosFormulario = new FormData(formulario);
 
-    // 4. Envia para o Formspree em segundo plano (AJAX)
+    // Envia para o Formspree
     fetch(formulario.action, {
         method: formulario.method,
         body: dadosFormulario,
@@ -30,32 +34,36 @@ document.getElementById('form-denuncia').addEventListener('submit', function(eve
     })
     .then(response => {
         if (response.ok) {
-            // SE O ENVIO DEU CERTO:
-            // Mostra o protocolo gerado na caixinha verde
+            // Sucesso! Mostra a resposta na tela
             document.getElementById('codigo-protocolo').innerText = protocoloFinal;
             document.getElementById('resultado-denuncia').style.display = 'block';
             
-            // Limpa os campos do formulário para uma próxima denúncia
+            // Limpa o formulário
             formulario.reset();
+            
+            // Rola a tela do celular suavemente até o aviso verde para o usuário ver
+            document.getElementById('resultado-denuncia').scrollIntoView({ behavior: 'smooth' });
         } else {
-            // Se o Formspree retornar algum erro
-            alert("Houve um erro ao enviar a denúncia. Por favor, tente novamente.");
+            alert("Houve um erro ao enviar. Por favor, tente novamente.");
         }
     })
     .catch(error => {
-        // Se houver erro de conexão/internet
-        alert("Erro de rede. Verifique sua conexão.");
+        alert("Erro de conexão. Verifique sua internet.");
     })
     .finally(() => {
-        // Reativa o botão de envio
-        if(botaoEnviar) botaoEnviar.disabled = false;
+        // Devolve o botão ao estado normal
+        if(botaoEnviar) {
+            botaoEnviar.disabled = false;
+            botaoEnviar.innerText = "ENVIAR DENÚNCIA"; 
+        }
     });
 });
 
-// Botão para fechar o aviso verde (caso tenha colocado no passo anterior)
+// Tratamento do botão fechar focado em Mobile
 const btnFechar = document.getElementById('btn-fechar-protocolo');
 if (btnFechar) {
-    btnFechar.addEventListener('click', function() {
+    btnFechar.addEventListener('click', function(e) {
+        e.preventDefault(); // Evita qualquer ação fantasma no mobile
         document.getElementById('resultado-denuncia').style.display = 'none';
     });
 }

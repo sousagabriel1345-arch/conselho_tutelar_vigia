@@ -372,3 +372,104 @@ footer h6 {
   color: #fff;
   margin: 10px 0 0 0;
 }
+/* ==========================================================================
+   REGRAS PARA DISPOSITIVOS MÓVEIS (TELAS ATÉ 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Menu / Header Principal */
+    header:not(.quem-somos-header) {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    header .LOGO {
+        margin-bottom: 15px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        background: #f8fafc;
+        border-radius: 5px;
+    }
+
+    /* 2. Banner Secundário (Quem Somos Header) */
+    .quem-somos-header {
+        padding: 30px 15px;
+        text-align: center;
+    }
+
+    .quem-somos-header h1 {
+        font-size: 2rem;
+    }
+
+    /* 3. Seção Institucional (Missão e Visão) */
+    .institucional {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .card-missao, .card-visao {
+        flex-direction: column; /* Alinha o ícone acima do texto */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .card-missao img, .card-visao img {
+        margin: 0 auto 15px auto; /* Centraliza a imagem */
+    }
+
+    /* 4. Grid de Valores e Grid de Equipe */
+    .valores-grid, .equipe-grid {
+        grid-template-columns: 1fr; /* Força uma única coluna no celular */
+        padding: 15px;
+        gap: 20px;
+    }
+
+    /* Opcional: Se quiser que os valores/equipe fiquem em 2 colunas em tablets */
+    @media (min-width: 480px) and (max-width: 768px) {
+        .valores-grid, .equipe-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .valor-item, .card-membro {
+        padding: 20px;
+    }
+
+    /* 5. Rodapé (Footer) */
+    .footer-sections {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 30px 15px;
+    }
+
+    .footer-column {
+        width: 100% !important;
+    }
+
+    .logo-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

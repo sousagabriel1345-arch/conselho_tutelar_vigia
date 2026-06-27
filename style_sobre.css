@@ -402,7 +402,12 @@ footer h6 {
         width: 100% !important;
         margin: 5px 0 !important;
     }
-
+nav ul li a {
+    display: block !important;
+    padding: 10px !important;
+    background: #f8fafc !important;
+    border-radius: 5px !important;
+}
     nav ul li a.btn-denuncia {
     background: #d32f2f !important;
     color: #ffffff !important;      

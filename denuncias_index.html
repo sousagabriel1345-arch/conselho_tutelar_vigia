@@ -173,13 +173,18 @@
 
             /* 2. Banner Secundário (Canal de Denúncia) */
             .denuncia-header {
-                flex-direction: column-reverse !important;
-                text-align: center !important;
-                padding: 30px 15px !important;
-                gap: 15px !important;
-                display: flex !important;
-                align-items: center !important;
-            }
+    display: flex !important;
+    flex-direction: column-reverse !important; /* Mantém o escudo em cima do texto interno */
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 30px 15px !important;
+    gap: 15px !important;
+    margin-top: 20px !important; /* Empurra o banner para baixo do menu, tirando o escudo do caminho */
+    clear: both !important;
+    width: 100% !important;
+}
+
 
             .header-conteudo h1 {
                 font-size: 1.8rem !important;

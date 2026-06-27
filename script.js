@@ -1,6 +1,5 @@
 document.getElementById('form-denuncia').addEventListener('submit', function(event) {
     // 1. Impede a página de recarregar e limpar os campos imediatamente
-    event.preventDefault();
 
     // 2. Função para gerar um código aleatório (Ex: DEN-2026-X8B3)
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -20,5 +19,4 @@ document.getElementById('form-denuncia').addEventListener('submit', function(eve
     areaResultado.style.display = 'block';
 
     // 4. (Opcional) Limpa os campos do formulário após o envio
-    this.reset();
 });

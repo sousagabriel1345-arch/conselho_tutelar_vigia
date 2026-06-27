@@ -172,17 +172,22 @@
 }
 
             /* 2. Banner Secundário (Canal de Denúncia) */
-            .denuncia-header {
+            /* Procure e substitua/adicione estas regras dentro da sua Media Query atual: */
+
+.denuncia-header {
     display: flex !important;
-    flex-direction: column-reverse !important; /* Mantém o escudo em cima do texto interno */
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    padding: 30px 15px !important;
-    gap: 15px !important;
-    margin-top: 20px !important; /* Empurra o banner para baixo do menu, tirando o escudo do caminho */
-    clear: both !important;
+    padding: 40px 15px !important;
+    margin-top: 0px !important; /* Reseta a margem antiga */
     width: 100% !important;
+}
+
+/* ESTA REGRA DETECTA E OCULTA O ESCUDO VERDE APENAS NO CELULAR */
+.denuncia-header .header-icone {
+    display: none !important;
 }
 
 

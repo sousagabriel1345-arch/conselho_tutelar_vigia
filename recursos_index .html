@@ -27,7 +27,7 @@
             </UL>
           </NAV>
           </HEADER>
-<header class="recursos-header">
+<selection class="recursos-header">
         <div class="header-conteudo">
             <h1>Direitos e Recursos</h1>
             <p>Informação é proteção. Conheça seus direitos, recursos e materiais educativos.</p>
@@ -35,7 +35,7 @@
         <div class="header-icone">
             <img src="icone-livro.png" alt="Ícone de Livro Aberto">
         </div>
-    </header>
+    </selection>
     <style>
         /* --- Configurações Gerais e Cores --- */
         :root {
@@ -181,6 +181,118 @@
             color: var(--text-light);
             font-size: 0.85rem;
         }
+              /* ==========================================================================
+           REGRAS PARA DISPOSITIVOS MÓVEIS (TELAS ATÉ 768px)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            
+            /* 1. Alinhamento e Ajuste do Menu Superior Principal */
+            header:not(.recursos-header) {
+                flex-direction: column !important;
+                text-align: center !important;
+                padding: 15px 10px !important;
+                height: auto !important;
+            }
+
+            header .LOGO {
+                margin-bottom: 15px !important;
+                justify-content: center !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+
+            nav ul {
+                flex-direction: column !important;
+                width: 100% !important;
+                padding: 0 !important;
+                display: flex !important;
+            }
+
+            nav ul li {
+                width: 100% !important;
+                margin: 5px 0 !important;
+            }
+
+            nav ul li a {
+                display: block !important;
+                padding: 10px !important;
+                background: #f8fafc !important;
+                border-radius: 5px !important;
+                color: var(--primary-dark) !important;
+            }
+
+            /* 2. Ajuste do Banner Secundário (Recursos Header) */
+            .recursos-header {
+                flex-direction: column-reverse !important; /* Coloca a imagem/ícone acima do texto no celular */
+                text-align: center !important;
+                padding: 30px 15px !important;
+                gap: 15px;
+            }
+
+            .header-conteudo h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .header-icone img {
+                max-width: 80px !important; /* Reduz o tamanho do ícone do livro no celular */
+            }
+
+            /* 3. Containers e Caixas de Texto */
+            .container {
+                padding: 0 15px !important;
+            }
+
+            .secao-recursos {
+                padding: 20px 15px !important; /* Dá mais espaço interno para o texto respirar */
+                margin-bottom: 20px !important;
+            }
+
+            .titulo-secao {
+                font-size: 1.25rem !important;
+            }
+
+            .item-direito p {
+                padding-left: 0 !important; /* Remove o recuo grande no celular para aproveitar a tela */
+                margin-top: 5px;
+            }
+
+            /* 4. Banner Fale Conosco */
+            .banner-fale-conosco {
+                flex-direction: column !important;
+                text-align: center !important;
+                padding: 20px !important;
+                gap: 20px !important;
+            }
+
+            .fale-conosco-texto {
+                flex-direction: column !important;
+                gap: 10px;
+            }
+
+            .btn-fale-conosco {
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            /* 5. Rodapé (Footer) Estrutura */
+            .footer-sections {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 30px !important;
+                padding: 30px 15px !important;
+            }
+
+            .footer-column {
+                width: 100% !important;
+            }
+
+            .logo-footer {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+        }
+
     </style>
 </head>
 <body>

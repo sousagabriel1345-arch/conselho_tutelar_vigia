@@ -632,3 +632,100 @@ footer h6 {
   color: #fff;
   margin: 10px 0 0 0;
 }
+/* ==========================================================================
+   REGRAS PARA DISPOSITIVOS MÓVEIS (TELAS ATÉ 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* Menu / Header */
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    header .LOGO {
+        margin-bottom: 15px;
+        justify-content: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        background: #f8fafc;
+        border-radius: 5px;
+    }
+
+    /* Banner Principal */
+    .banner-principal {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .banner-conteudo h1 {
+        font-size: 1.8rem;
+    }
+
+    .banner-botoes {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .banner-botoes a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Grid de Serviços */
+    .servicos-grid {
+        grid-template-columns: 1fr; /* Transforma as colunas em uma linha única por item */
+        padding: 10px;
+        gap: 15px;
+    }
+
+    /* Banner de Chamada (Denuncie. Proteja. Transforme) */
+    .banner-chamada {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .chamada-texto {
+        flex-direction: column;
+    }
+
+    .btn-fazer-denuncia {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Rodapé (Footer) */
+    .footer-sections {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-column {
+        width: 100% !important;
+    }
+
+    .logo-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+}

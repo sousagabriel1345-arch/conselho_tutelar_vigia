@@ -714,9 +714,12 @@ footer h6 {
 
     /* Rodapé (Footer) */
     .footer-sections {
-        flex-direction: column;
-        text-align: center;
+        display:flex !important;
+        flex-direction: column !important;
+        align-itens: flex-start !important;
+        text-align: left !important;
         gap: 30px;
+        padding:30px 15px !important;
     }
 
     .footer-column {

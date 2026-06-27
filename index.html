@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Conselho Tutelar</title>
     
     <!-- Importando a fonte Anton do Google Fonts -->
@@ -110,32 +112,36 @@
         const card = document.createElement('article');
         
         // Estilo do container principal
-        card.style.background = '#ffffff';
-        card.style.border = '1px solid #e2e8f0';
-        card.style.borderRadius = '8px';
-        card.style.marginBottom = '25px';
-        card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
-        card.style.overflow = 'hidden';
-        card.style.display = 'table'; 
-        card.style.width = '100%';
+        // Substitua o bloco de estilos e innerHTML dentro do forEach por este:
 
-        // Imagem padrão caso não tenha nenhuma salva
-        const imagemSrc = noticia.imagem ? noticia.imagem : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e2e8f0"/></svg>';
+// Estilo do container principal (agora usando Flexbox responsivo)
+card.style.background = '#ffffff';
+card.style.border = '1px solid #e2e8f0';
+card.style.borderRadius = '8px';
+card.style.marginBottom = '25px';
+card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+card.style.overflow = 'hidden';
+card.style.display = 'flex'; 
+card.style.flexWrap = 'wrap'; // Permite que a imagem fique em cima do texto no celular
+card.style.width = '100%';
 
-        // Montando as duas colunas estruturadas (SEM O BOTÃO)
-        card.innerHTML = `
-            <div style="display: table-cell; width: 35%; vertical-align: top; background-color: #f8fafc; border-right: 1px solid #e2e8f0;">
-                <img src="${imagemSrc}" alt="Imagem da notícia" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-            </div>
+const imagemSrc = noticia.imagem ? noticia.imagem : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e2e8f0"/></svg>';
 
-            <div style="display: table-cell; width: 65%; vertical-align: top; padding: 25px;">
-                <h3 style="color: #1e293b; margin: 0 0 12px 0; font-size: 1.4rem; font-weight: bold; line-height: 1.3;">
-                    ${noticia.titulo}
-                </h3>
-                <p style="color: #475569; line-height: 1.6; font-size: 1rem; margin: 0; white-space: pre-wrap;">
-                    ${noticia.conteudo}
-                </p>
-            </div>
+card.innerHTML = `
+    <div class="noticia-col-img" style="flex: 1 1 300px; background-color: #f8fafc;">
+        <img src="${imagemSrc}" alt="Imagem da notícia" style="width: 100%; height: 220px; object-fit: cover; display: block;">
+    </div>
+
+    <div class="noticia-col-texto" style="flex: 2 1 400px; padding: 25px;">
+        <h3 style="color: #1e293b; margin: 0 0 12px 0; font-size: 1.4rem; font-weight: bold; line-height: 1.3;">
+            ${noticia.titulo}
+        </h3>
+        <p style="color: #475569; line-height: 1.6; font-size: 1rem; margin: 0; white-space: pre-wrap;">
+            ${noticia.conteudo}
+        </p>
+    </div>
+`;
+ 
         `;
         
         feedNoticias.appendChild(card);

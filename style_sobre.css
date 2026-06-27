@@ -455,8 +455,10 @@ nav ul li a {
 
     /* 4. Rodapé (Footer) igual ao index.html */
     .footer-sections {
+        display:flex !important;
         flex-direction: column !important;
-        text-align: center !important;
+        align-items: flex-start !important;
+        text-align: left !important;
         gap: 30px !important;
         padding: 30px 15px !important;
     }

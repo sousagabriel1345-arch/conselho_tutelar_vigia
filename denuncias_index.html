@@ -331,7 +331,7 @@
             <section class="secao-formulario">
                 <h2>Faça sua denúncia</h2>
                 
-                <form action="https://formspree.io/f/mvznnnez" method="POST">
+                <form id="form-denuncia" action="https://formspree.io/f/mvznnnez" method="POST">
                     <input type="hidden" name="_next" value="http://127.0.0.1:5500/inicio_index.html">
                     
                     <!-- Campo 1: Relato -->
@@ -392,6 +392,14 @@
                         <button type="reset" class="btn-limpar">LIMPAR FORMULÁRIO</button>
                     </div>
                 </form>
+
+<div id="resultado-denuncia" style="margin-top: 20px; padding: 15px; display: none; background-color: #e8f5e9; border: 1px solid #4caf50; border-radius: 8px;">
+    <h3 style="color: #2e7d32; margin-0 0 10px 0;">Denúncia Enviada com Sucesso!</h3>
+    <p>Guarde o seu código de acompanhamento:</p>
+    <strong id="codigo-protocolo" style="font-size: 20px; color: #1b5e20; letter-spacing: 1px;"></strong>
+</div>
+
+<script src="script.js"></script>
             </section>
 
             <!-- BARRA LATERAL: TELEFONES -->

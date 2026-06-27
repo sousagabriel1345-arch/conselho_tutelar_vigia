@@ -581,14 +581,54 @@ footer h6 {
     }
 
     /* Ajustes dos inputs para preencher melhor no celular */
+    /* Substitua o bloco ".campo-grupo", ".campo-icone" etc, dentro da Media Query por este: */
+
     .campo-grupo {
-        flex-direction: column !important; /* Coloca os ícones acima ou remove o recuo lateral */
-        gap: 8px;
+        display: flex !important;
+        flex-direction: row !important; /* Mantém o ícone ao lado, mas ajusta o alinhamento */
+        align-items: flex-start !important;
+        width: 100% !important;
+        gap: 12px !important;
+        margin-bottom: 20px !important;
     }
 
     .campo-icone {
-        display: none !important; /* Opcional: Oculta os mini ícones dos campos para ganhar espaço em telas muito pequenas */
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 40px !important; /* Define um espaço fixo pequeno para o ícone */
+        min-width: 40px !important;
+        margin-top: 28px !important; /* Alinha o ícone verticalmente com a caixa de texto */
     }
+
+    .campo-icone img {
+        max-width: 24px !important;
+        height: auto !important;
+    }
+
+    .campo-input {
+        flex: 1 !important; /* Força o campo de texto a ocupar TODO o espaço restante */
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .campo-input label {
+        width: 100% !important;
+        text-align: left !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* Garante que os inputs e o textarea preencham a largura total do card branco */
+    .campo-input input[type="text"],
+    .campo-input input[type="email"],
+    .campo-input textarea {
+        width: 100% !important;
+        min-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 10px !important;
+    }
+
 
     .botoes-acao {
         flex-direction: column !important;

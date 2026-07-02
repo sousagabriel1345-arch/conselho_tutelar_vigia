@@ -398,10 +398,10 @@ main {
     background-color: #f1f5f9;
     transform: translateY(-1px);
 }
-footer {
-    align-itens:center !important;
+
+  footer {
     background:#082b5a;
-    color:#000;
+    color:#fff;
     text-align:left;
     padding:40px 30px;
     border-top:1px solid #140101;
@@ -416,22 +416,21 @@ footer h6 {
   color: #fff;
 }
 .footer-sections {
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:flex-start !important;
-  text-align:left !important;
-  gap:30px;
-  padding: 30px 15px !important;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:40px;
 }
 .footer-column {
   display:flex;
   flex-direction:column;
-  align-items:center;
-   font-size:14px;
+  align-items:flex-start;
+   font-size:16px;
   color: #fff;
   margin:0;
   line-height:1.2;
-  min-width:200px;
+  min-width:220px;
 
 }
 .footer-column h4 {
@@ -467,7 +466,6 @@ footer h6 {
   color: #fff;
   margin: 10px 0 0 0;
 }
-
 /* ==========================================================================
    7. RESPONSIVIDADE (MOBILE / TELAS PEQUENAS)
    ========================================================================== */

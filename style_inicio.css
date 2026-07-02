@@ -566,6 +566,7 @@ nav a:hover {
   margin-top: 20px;
 }
   footer {
+    align-itens:center;
     background:#082b5a;
     color:#fff;
     text-align:left;
